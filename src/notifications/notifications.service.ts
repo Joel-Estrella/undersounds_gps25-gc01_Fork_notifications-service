@@ -15,8 +15,9 @@ export class NotificationsService {
         });
 
         if (notification.channel === 'email') {
+            console.log('📧 Enviando email a: random@gmail.com'); // Agrega esto
             await this.mailService.sendMail(
-                'joelestrellaberrocal@gmail.com',        // esto debe ser un email o mapearlo a uno
+                'random@gmail.com',        // esto debe ser un email o mapearlo a uno
                 'Nueva notificación',
                 notification.message,
             );
