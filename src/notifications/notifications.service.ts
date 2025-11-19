@@ -59,5 +59,5 @@ export class NotificationsService {
             where: { id },
         });
     }
-    // TESTING
+    // TESTING COMPLETADO NOTIFICACIONES
 }
