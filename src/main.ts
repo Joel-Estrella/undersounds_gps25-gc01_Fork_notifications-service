@@ -8,13 +8,16 @@ async function bootstrap() {
 
     // Activamos validación automática para DTOs
     app.useGlobalPipes(new ValidationPipe({
-        whitelist: true, // elimina propiedades no declaradas en DTO
-        forbidNonWhitelisted: true, // lanza error si vienen propiedades extra
-        transform: true, // transforma tipos automáticamente según DTO
+        whitelist: true,
+        forbidNonWhitelisted: false,  // ✅ CAMBIA esto a 'false'
+        transform: true,
     }));
 
-    const port = 3000;
-    await app.listen(port);
+    const port = process.env.PORT || 3000;
+
+    // 👇 Necesario para Docker: exponer el servicio a todo el contenedor
+    await app.listen(port, '0.0.0.0');
+
     console.log(`🚀 Notifications service is running on http://localhost:${port}`);
 }
 bootstrap();
